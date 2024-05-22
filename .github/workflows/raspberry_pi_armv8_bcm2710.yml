@@ -1,10 +1,8 @@
 name: Raspberry_pi_zero_2_w_armv8
-
 on:
   pull_request:
     branches: [ "master" ]
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -13,46 +11,42 @@ jobs:
       LLVM_ADIN_PATH: ${{ github.workspace }}/Linux_x64/
       PRETTY_OUTPUT_DIR: 1
       RASPBERRY_TOOL_PATH: ${{ github.workspace }}/tools/
-
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: 'true'
-
       - name: download Adin
         run: |
           wget https://github.com/remotemcu/adin-llvm/releases/download/llvm-8.0-adin-1.0/Linux_x64.zip
           unzip Linux_x64.zip
-
       - name: install dependencies
         run: |
           sudo apt update
           sudo apt install -y micro mc gcc-multilib g++-multilib wget unzip
-
       - name: download ARMv8 toolchain
         run: |
           git clone https://github.com/tttapa/docker-arm-cross-toolchain
           mkdir -p $RASPBERRY_TOOL_PATH
           mv docker-arm-cross-toolchain/cmake/armv8-rpi3-linux-gnueabihf $RASPBERRY_TOOL_PATH/
-
+      - name: checkout remcu fork
+        run: |
+          git clone https://github.com/emrxv/remcu 
+          cp remcu/platform/raspberry_pi_armv8_bcm2710.cmake ${{github.workspace}}/
       - name: Configure CMake
         run: cmake -B ${{github.workspace}}/build -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/raspberry_pi_armv8_bcm2710.cmake
     
       - name: Build
         run: cmake --build ${{github.workspace}}/build 
-
       - name: Zip artifacts
         run: |
           zip -qqr build_folder.zip ${{github.workspace}}/build
           ls -la build_folder.zip
           ls -lh build_folder.zip
-
       - uses: actions/upload-artifact@v3
         with:
           name: build_folder
           path: build_folder.zip
           if-no-files-found: error
-
       - name: Commit & push
         if: github.actor == 'ser-mk'
         run: |
