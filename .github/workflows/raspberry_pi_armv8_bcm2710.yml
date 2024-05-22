@@ -10,7 +10,7 @@ jobs:
     env:
       LLVM_ADIN_PATH: ${{ github.workspace }}/Linux_x64/
       PRETTY_OUTPUT_DIR: 1
-      RASPBERRY_TOOL_PATH: ${{ github.workspace }}
+      RASPBERRY_TOOL_PATH: ${{ github.workspace }}/tools/
     steps:
       - uses: actions/checkout@v3
         with:
