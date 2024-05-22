@@ -1,4 +1,4 @@
-name: Raspberry_pi_4_armv8
+name: Raspberry_pi_zero_2_w_armv8
 
 on:
   pull_request:
@@ -36,7 +36,7 @@ jobs:
           mv docker-arm-cross-toolchain/cmake/armv8-rpi3-linux-gnueabihf $RASPBERRY_TOOL_PATH/
 
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/raspberry_pi_armv8_bcm2711.cmake
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/raspberry_pi_armv8_bcm2710.cmake
     
       - name: Build
         run: cmake --build ${{github.workspace}}/build 
