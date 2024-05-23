@@ -32,9 +32,9 @@ jobs:
       - name: checkout remcu fork
         run: |
           git clone https://github.com/emrxv/remcu 
-          cp remcu/platform/raspberry_pi_armv8_bcm2710.cmake ${{github.workspace}}/
+          mv remcu/ ${{github.workspace}}/
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/raspberry_pi_armv8_bcm2710.cmake -Wno-dev
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/remcu/platform/raspberry_pi_armv8_bcm2710.cmake -Wno-dev
     
       - name: Build
         run: cmake --build ${{github.workspace}}/build 
