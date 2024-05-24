@@ -3,4 +3,4 @@
 	url = https://github.com/ser-mk/CxxHeader2Py.git
 [submodule "REMCU"]
 	path = REMCU
-	url = https://github.com/emrxv/remcu.git
+	url = https://github.com/pemerick07/remcu.git
