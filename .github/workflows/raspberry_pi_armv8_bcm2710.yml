@@ -10,9 +10,9 @@ jobs:
     env:
       LLVM_ADIN_PATH: ${{ github.workspace }}/Linux_x64/
       PRETTY_OUTPUT_DIR: 1
-      RASPBERRY_TOOL_PATH: ${{ github.workspace }}/remcu/
+      RASPBERRY_TOOL_PATH: ${{ github.workspace }}/tools/
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: 'true'
       - name: download Adin
@@ -26,12 +26,8 @@ jobs:
           sudo apt purge clang-*
           sudo apt install clang-8
           echo "/usr/lib/llvm-8/bin/" >> $GITHUB_PATH
-      - name: download ARMv8 toolchain
-        run: |
           git clone https://github.com/tttapa/docker-arm-cross-toolchain
-      - name: checkout remcu fork
-        run: |
-          git clone https://github.com/emrxv/remcu 
+          mv docker-arm-cross-toolchain tools
       - name: Configure CMake
         run: cmake -B ${{github.workspace}}/build -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/remcu/platform/raspberry_pi_armv8_bcm2710.cmake -Wno-dev
     
