@@ -4,6 +4,7 @@ project(
   LANGUAGES CXX)
   
 cmake_minimum_required(VERSION 3.5)
+cmake_policy(SET CMP0153 NEW)
 
 set(REMCU_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/output)
 
