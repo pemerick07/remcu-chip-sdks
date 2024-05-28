@@ -1,3 +1,8 @@
+project(
+  remcu-chip-sdks
+  VERSION 1.0
+  LANGUAGES CXX)
+  
 cmake_minimum_required(VERSION 3.5)
 
 set(REMCU_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/output)
