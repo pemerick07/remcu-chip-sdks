@@ -29,6 +29,10 @@ jobs:
         with:
           submodules: 'true'
 
+      - name: update submodules
+        run: |
+          git submodule update --init
+
       # Runs a single command using the runners shell
       - name: download Adin
         run: |
