@@ -4,3 +4,4 @@
 [submodule "REMCU"]
 	path = REMCU
 	url = https://github.com/pemerick07/remcu.git
+	branch = master
