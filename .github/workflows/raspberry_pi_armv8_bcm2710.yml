@@ -35,6 +35,9 @@ jobs:
         run: |
           mkdir -p ~/opt
           wget https://github.com/tttapa/docker-arm-cross-toolchain/releases/latest/download/x-tools-aarch64-rpi3-linux-gnu-gcc14.tar.xz -O- | tar xJ -C ~/opt
+      - name: Set environment variables
+        run: |
+          echo "RASPBERRY_TOOL_PATH=${{ github.workspace }}/opt/x-tools/armv8-rpi3-linux-gnueabihf" >> $GITHUB_ENV
       - name: checkout remcu fork
         run: |
           git clone https://github.com/emrxv/remcu 
