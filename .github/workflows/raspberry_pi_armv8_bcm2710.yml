@@ -19,7 +19,7 @@ jobs:
       # Make sure we're getting the latest commit of the submodules
       - name: update submodules
         run: |
-            cd remcu-chip-sdks
+            cd ${{ github.workspace }}/remcu-chip-sdks/
             git submodule update --remote
 
       - name: download Adin
