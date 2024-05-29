@@ -19,8 +19,9 @@ jobs:
       # Make sure we're getting the latest commit of the submodules
       - name: update submodules
         run: |
-            cd ${{ github.workspace }}/
-            git submodule update --remote
+          git submodule update --remote
+          mv REMCU remcu
+          ls
 
       - name: download Adin
         run: |
@@ -38,7 +39,7 @@ jobs:
           mv x-tools tools
 
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/remcu/platform/raspberry_pi_armv8_bcm2710.cmake -Wno-dev
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/remcu/platform/raspberry_pi_armv8_bcm2710.cmake
     
       - name: Build
         run: cmake --build ${{github.workspace}}/build 
