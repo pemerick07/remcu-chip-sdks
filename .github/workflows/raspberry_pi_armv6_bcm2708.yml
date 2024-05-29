@@ -31,7 +31,7 @@ jobs:
 
       - name: update submodules
         run: |
-          git submodule update --init
+          git submodule update --remote
 
       # Runs a single command using the runners shell
       - name: download Adin
