@@ -10,7 +10,7 @@ jobs:
     env:
       LLVM_ADIN_PATH: ${{ github.workspace }}/Linux_x64/
       PRETTY_OUTPUT_DIR: 1
-      RASPBERRY_TOOL_PATH: ${{ github.workspace }}/opt/
+      RASPBERRY_TOOL_PATH: ${{ github.workspace }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,11 +33,10 @@ jobs:
           echo "/usr/lib/llvm-8/bin/" >> $GITHUB_PATH
       - name: download ARMv8 toolchain
         run: |
-          mkdir -p ~/opt
-          wget https://github.com/tttapa/docker-arm-cross-toolchain/releases/latest/download/x-tools-armv8-rpi3-linux-gnueabihf-gcc12.tar.xz -O- | tar xJ -C ~/opt
+          wget https://github.com/tttapa/docker-arm-cross-toolchain/releases/latest/download/x-tools-armv8-rpi3-linux-gnueabihf-gcc12.tar.xz -O- | tar xJ -C ${{ github.workspace }}      
       - name: Set environment variables
         run: |
-          echo "RASPBERRY_TOOL_PATH=${{ github.workspace }}/opt/x-tools-armv8-rpi3-linux-gnueabihf-gcc12/x-tools/armv8-rpi3-linux-gnueabihf" >> $GITHUB_ENV
+          echo "RASPBERRY_TOOL_PATH=${{ github.workspace }}/x-tools-armv8-rpi3-linux-gnueabihf-gcc12/x-tools/armv8-rpi3-linux-gnueabihf" >> $GITHUB_ENV
       - name: checkout remcu fork
         run: |
           git clone https://github.com/emrxv/remcu 
