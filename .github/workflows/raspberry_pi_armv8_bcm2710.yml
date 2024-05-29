@@ -36,7 +36,7 @@ jobs:
           wget https://github.com/tttapa/docker-arm-cross-toolchain/releases/latest/download/x-tools-armv8-rpi3-linux-gnueabihf-gcc12.tar.xz -O- | tar xJ -C ${{ github.workspace }}      
       - name: Set environment variables
         run: |
-          echo "RASPBERRY_TOOL_PATH=${{ github.workspace }}/x-tools-armv8-rpi3-linux-gnueabihf-gcc12/x-tools/armv8-rpi3-linux-gnueabihf" >> $GITHUB_ENV
+          echo "RASPBERRY_TOOL_PATH=${{ github.workspace }}/x-tools/armv8-rpi3-linux-gnueabihf" >> $GITHUB_ENV
       - name: checkout remcu fork
         run: |
           git clone https://github.com/emrxv/remcu 
