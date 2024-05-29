@@ -1,7 +1,7 @@
-[submodule "parser"]
+CU[submodule "parser"]
 	path = parser
 	url = https://github.com/ser-mk/CxxHeader2Py.git
-[submodule "remcu"]
-	path = remcu
+[submodule "REMCU"]
+	path = REMCU
 	url = https://github.com/pemerick07/remcu.git
 	branch = master
