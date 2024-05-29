@@ -14,7 +14,7 @@ add_subdirectory(stm32)
 
 add_subdirectory(stm8)
 
-if(NOT ${TARGET_REMCU_OS_NAME} STREQUAL "Raspbian_armv6")
+if(NOT ${TARGET_REMCU_OS_NAME} STREQUAL "Raspbian_armv8")
 	add_subdirectory(nordicsemi)
 endif()
 
@@ -27,7 +27,7 @@ if(NOT WIN32)
 
 	add_subdirectory(SiLabs)
 
-	if(NOT ${TARGET_REMCU_OS_NAME} STREQUAL "Raspbian_armv6")
+	if(NOT ${TARGET_REMCU_OS_NAME} STREQUAL "Raspbian_armv8")
 		
 		add_subdirectory(freescale)
 		
