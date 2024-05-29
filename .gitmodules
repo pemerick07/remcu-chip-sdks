@@ -1,4 +1,4 @@
-CU[submodule "parser"]
+[submodule "parser"]
 	path = parser
 	url = https://github.com/ser-mk/CxxHeader2Py.git
 [submodule "REMCU"]
