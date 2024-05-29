@@ -37,7 +37,7 @@ jobs:
           mv x-tools tools
 
       - name: Configure CMake
-        run: cmake -B ${{github.workspace}}/build -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/REMCU/platform/raspberry_pi_armv8_bcm2710.cmake
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_TOOLCHAIN_FILE=${{github.workspace}}/tools/armv8-rpi3-linux-gnueabihf/armv8-rpi3-linux-gnueabihf.toolchain.cmake
     
       - name: Build
         run: cmake --build ${{github.workspace}}/build 
